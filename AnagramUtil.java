@@ -2,6 +2,29 @@ package assignment04;
 
 import java.util.Comparator;
 
+/**
+ * We have been asked to construct a program that determines if two words are
+ * anagrams and finds the largest group of anagrams in a list of words.
+ * 
+ * Two words are anagrams if they contain the same letters in the same
+ * frequency. For example, alert and later are anagrams.
+ * 
+ * Now that we know how to implement an insertion sort, we are eager to use
+ * sorting to solve these two problems:
+ * 
+ * To check if two words are anagrams, simply sort the characters in each word.
+ * If the sorted versions are the same, the words are anagrams of each other.
+ * 
+ * To find the largest group of anagrams in a list of words, sort the list with
+ * a Comparator that compares the sorted character representations of the words.
+ * 
+ * After the sort, any group of words that are anagrams of each other will be
+ * adjacent in the list.
+ * 
+ * @author Andy Dao, uID: u0692334
+ * @author Moses Manning, uId: u0724216
+ *
+ */
 public class AnagramUtil {
 
 	/**

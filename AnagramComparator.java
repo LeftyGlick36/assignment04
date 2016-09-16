@@ -1,6 +1,11 @@
 package assignment04;
 
-public abstract class AnagramComparator implements Comparable<String> {
+import java.util.Comparator;
+/**
+ * @author Andy Dao, uID: u0692334
+ * @author Moses Manning, uId: u0724216
+ */
+public class AnagramComparator implements Comparator<String> {
 
 	/**
 	 * Determine if we use Comparator or Comparable If Comparator is null, use
@@ -15,14 +20,14 @@ public abstract class AnagramComparator implements Comparable<String> {
 	 * @return - negative number if left is not equal to right, and a positive
 	 *         number if left is equal to the right.
 	 */
-	public int compareTo(String left, String right) {
 
+	@Override
+	public int compare(String left, String right) {
 		if (AnagramUtil.areAnagrams(left, right)) {
 			return 1;
 		} else {
 			return -1;
 		}
-
 	}
 
 }
