@@ -51,7 +51,17 @@ public class AnagramUtilTest {
 
 	@Test
 	public void testAreAnagrams() {
-		fail("Not yet implemented");
+		assertTrue(AnagramUtil.areAnagrams("actress", "casters"));
+	}
+	
+	@Test
+	public void testAreAnagramsIgnoreCaps() {
+		assertTrue(AnagramUtil.areAnagrams("aLLerGy", "lArgELY"));
+	}
+	
+	@Test
+	public void testAreNotAnagrams() {
+		assertFalse(AnagramUtil.areAnagrams("salesman", "lameness")); // This is false because salesman has an extra "a" (total of 2) unlike lameness with 1 "a'
 	}
 
 	@Test

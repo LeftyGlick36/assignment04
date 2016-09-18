@@ -97,7 +97,18 @@ public class AnagramUtil {
 	 * @return boolean
 	 */
 	public static boolean areAnagrams(String left, String right) {
-		return false;
+		// First check to see if they're the same length
+		if(left.length() != right.length()) {
+			return false;	// if not, then we know automatically they're not Anagrams.
+		}
+		
+		// Using the sort method, pass in the left string and right string 
+		if(sort(left.toLowerCase()).equals(sort(right.toLowerCase()))) {
+			return true; // Return true if after sorted and they equal each other, they're Anagrams
+		}
+		else {
+			return false;
+		}
 	}
 
 	/**
