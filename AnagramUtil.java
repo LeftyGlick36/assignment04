@@ -47,7 +47,14 @@ public class AnagramUtil {
 	 * @param cmp
 	 */
 	public static <T> void insertionSort(T[] list, Comparator<? super T> cmp) {
+		for (int p = 1; p < list.length; p++) {
+			T tmp = list[p];
+			int j = p;
 
+			for (; j > 0 && cmp.compare(tmp, list[j - 1]) < 0; j--)
+				list[j] = list[j - 1];
+			list[j] = tmp;
+		}
 	}
 
 	/**
@@ -71,7 +78,7 @@ public class AnagramUtil {
 	 */
 	public static String[] getLargestAnagramGroup(String[] largestAnagrams) {
 		return largestAnagrams;
-		
+
 	}
 
 	/**
