@@ -1,5 +1,6 @@
 package assignment04;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 
 /**
@@ -35,8 +36,33 @@ public class AnagramUtil {
 	 * @return
 	 */
 	public static String sort(String word) {
+		// Place our string into an arrayList of Char's
+		ArrayList<String> stringArray = new ArrayList<String>();
+		// Grab each individual char at each position and add to our stringArray
+		for (int i = 0; i < word.length(); i++) {
+			stringArray.add(word.substring(i, i + 1));
+		}
 
-		return word;
+		// Sort our list of arrays
+		for (int p = 1; p < stringArray.size(); p++) {
+			// the initial state the first element, considering by itself, is
+			// sorted.
+			String temp = stringArray.get(p);
+			int j = p;
+			//
+			for (; j > 0 && temp.compareToIgnoreCase(stringArray.get(j - 1)) < 0; j--) {
+				stringArray.set(j, stringArray.get(j - 1));
+			}
+			stringArray.set(j, temp);
+		}
+
+		// Return all concatenated letters from stringArray back into a sorted
+		// string
+		String sortedString = "";
+		for (int i = 0; i < stringArray.size(); i++) {
+			sortedString = sortedString + stringArray.get(i);
+		}
+		return sortedString;
 	}
 
 	/**
@@ -44,14 +70,19 @@ public class AnagramUtil {
 	 * input Comparator object.
 	 * 
 	 * @param list
-	 * @param cmp
+	 * @param compartator
 	 */
-	public static <T> void insertionSort(T[] list, Comparator<? super T> cmp) {
+	public static <T> void insertionSort(T[] list, Comparator<? super T> compartator) {
 		for (int p = 1; p < list.length; p++) {
+			// the initial state the first element, considering by itself, is
+			// sorted.
 			T tmp = list[p];
 			int j = p;
-
-			for (; j > 0 && cmp.compare(tmp, list[j - 1]) < 0; j--)
+			// when the second loop is entered we are guaranteed that the
+			// elements in array positions 0 through
+			// p–1 have already been sorted and that we need to extend this to
+			// positions 0 to p
+			for (; j > 0 && compartator.compare(tmp, list[j - 1]) < 0; j--)
 				list[j] = list[j - 1];
 			list[j] = tmp;
 		}

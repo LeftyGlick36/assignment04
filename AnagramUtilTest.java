@@ -1,7 +1,8 @@
 package assignment04;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
+import java.util.Comparator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,25 +19,33 @@ public class AnagramUtilTest {
 
 	@Test
 	public void testSort() {
-		fail();
+		assertEquals("abd", AnagramUtil.sort("dab"));
+		assertEquals("abcr", AnagramUtil.sort("crab"));
+		assertEquals("emoss", AnagramUtil.sort("moses"));
+		assertEquals("Adny", AnagramUtil.sort("Andy"));
+		assertEquals("eggr", AnagramUtil.sort("greg"));
+		assertEquals("adm", AnagramUtil.sort("dam"));
+		assertEquals("agiiinrV", AnagramUtil.sort("Virginia"));
+		assertEquals("aABCDdEFGHIJKLMNnOPQRSTUVWXYZ", AnagramUtil.sort("ZYXWVUTSRQPONMLKJIHGFEDCBandA"));
+		assertEquals("ABCDEFGHIJKLMNOPQRSTUVWXYZ", AnagramUtil.sort("ZYXWVUTSRQPONMLKJIHGFEDCBA"));
+
+
 	}
 
 	@Test
 	public void testInsertionSort() {
 		AnagramComparator insertionSortCompare = new AnagramComparator();
-		String[] list = {"Ace", "Bad", "Doggy","Even", "Froggy" };
-		String[] numberedList = {"5","4","3","2","1"};
+		String[] list = { "Ace", "bad", "Foggry", "Even", "Froggy", "dab" };
+		String[] numberedList = { "5", "5", "1", "44", "353", "2", "153", "74", "1", "22", "74" };
 		AnagramUtil.insertionSort(numberedList, insertionSortCompare);
 		AnagramUtil.insertionSort(list, insertionSortCompare);
 		for (int i = 0; i < list.length; i++) {
 			System.out.println(list[i]);
 		}
-		
+
 		for (int i = 0; i < numberedList.length; i++) {
 			System.out.println(numberedList[i]);
 		}
-		
-		
 
 	}
 
