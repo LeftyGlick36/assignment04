@@ -120,14 +120,13 @@ public class AnagramUtil {
 	 * 
 	 * @return String[]
 	 */
-	@SuppressWarnings("null")
+
 	public static String[] getLargestAnagramGroup(String[] largestAnagrams) {
 
 		// sort all possible anagrams in our string
 		AnagramComparator cmp = new AnagramComparator();
 		insertionSort(largestAnagrams, cmp);
 		ArrayList largestGroup = new ArrayList<>();
-		
 
 		for (int i = 0; i < largestAnagrams.length; i++) {
 			ArrayList currentLargestAnagramGroup = new ArrayList<>();
@@ -148,7 +147,7 @@ public class AnagramUtil {
 				}
 
 			}
-			
+
 		}
 		String[] result = new String[largestGroup.size()];
 		result = (String[]) largestGroup.toArray(result);
