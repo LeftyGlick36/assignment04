@@ -2,6 +2,8 @@ package assignment04;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
 import org.junit.After;
@@ -88,13 +90,13 @@ public class AnagramUtilTest {
     @Test
     public void getLargestAnagramGroupString2() {
 	String[] list = { "Ace", "bad", "Foggry", "reacts", "Even", "Froggy", "recast", "dab" };
-	String[] expectedList = { "Foggry", "Froggy" }; // This might be wrong and probably should be reacts and recast
+	String[] expectedList = { "reacts", "recast" }; // This might be wrong and probably should be reacts and recast
 	// Waiting for discussion response to see what should be the correct expected list
 	assertArrayEquals(expectedList, AnagramUtil.getLargestAnagramGroup(list));
     }
     
     @Test
-    public void getLargestAnagramGroupString_File(){
+    public void getLargestAnagramGroupString_File() throws IOException{
 	String[] list = AnagramUtil.getLargestAnagramGroup("sample_word_list.txt");
 	String[] expectedList = { "carets", "Caters", "caster", "crates", "Reacts", "recast", "traces" };
 	assertArrayEquals(expectedList, list);
