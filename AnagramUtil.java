@@ -126,19 +126,28 @@ public class AnagramUtil {
 		// sort all possible anagrams in our string
 		AnagramComparator cmp = new AnagramComparator();
 		insertionSort(largestAnagrams, cmp);
+
+		// Specifies the largest group of anagrams
 		ArrayList largestGroup = new ArrayList<>();
 
 		for (int i = 0; i < largestAnagrams.length; i++) {
-			ArrayList currentLargestAnagramGroup = new ArrayList<>();
 
+			// Creates a current list of the anagrams being scanned
+			ArrayList currentLargestAnagramGroup = new ArrayList<>();
 			currentLargestAnagramGroup.add(largestAnagrams[i]);
 
 			for (int j = i + 1; j < largestAnagrams.length; j++) {
 
+				// Takes the first element in our list and compares it to every
+				// other elementleft in the list
 				if (areAnagrams(largestAnagrams[i], largestAnagrams[j])) {
 
+					// If they're anagrams add them to currentList
 					currentLargestAnagramGroup.add(largestAnagrams[j]);
 
+					// If currentList is larger than our previous Largestgroup
+					// of anagrams then set that current list to the new largest
+					// list
 					if (currentLargestAnagramGroup.size() > largestGroup.size()) {
 						largestGroup = currentLargestAnagramGroup;
 
@@ -149,6 +158,7 @@ public class AnagramUtil {
 			}
 
 		}
+		// Return the Largestgroup as an array of strings
 		String[] result = new String[largestGroup.size()];
 		result = (String[]) largestGroup.toArray(result);
 
