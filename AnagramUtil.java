@@ -43,9 +43,9 @@ public class AnagramUtil {
 			stringArray.add(word.substring(i, i + 1));
 		}
 
-		// Sort our list of arrays
+		// Use an insertionSort on our list of arrays
 		for (int p = 1; p < stringArray.size(); p++) {
-			// the initial state the first element, considering by itself, is
+			// The initial state the first element, considering by itself, is
 			// sorted.
 			String temp = stringArray.get(p);
 			int j = p;
@@ -76,15 +76,15 @@ public class AnagramUtil {
 		for (int p = 1; p < list.length; p++) {
 			// the initial state the first element, considering by itself, is
 			// sorted.
-			T tmp = list[p];
+			T temporary = list[p];
 			int j = p;
 			// when the second loop is entered we are guaranteed that the
 			// elements in array positions 0 through
 			// p–1 have already been sorted and that we need to extend this to
 			// positions 0 to p
-			for (; j > 0 && compartator.compare(tmp, list[j - 1]) < 0; j--)
+			for (; j > 0 && compartator.compare(temporary, list[j - 1]) < 0; j--)
 				list[j] = list[j - 1];
-			list[j] = tmp;
+			list[j] = temporary;
 		}
 	}
 
@@ -98,15 +98,17 @@ public class AnagramUtil {
 	 */
 	public static boolean areAnagrams(String left, String right) {
 		// First check to see if they're the same length
-		if(left.length() != right.length()) {
-			return false;	// if not, then we know automatically they're not Anagrams.
+		if (left.length() != right.length()) {
+			// if not, then we know automatically they're not Anagrams.
+			return false;
 		}
-		
-		// Using the sort method, pass in the left string and right string 
-		if(sort(left.toLowerCase()).equals(sort(right.toLowerCase()))) {
-			return true; // Return true if after sorted and they equal each other, they're Anagrams
-		}
-		else {
+
+		// Using the sort method, pass in the left string and right string
+		if (sort(left.toLowerCase()).equals(sort(right.toLowerCase()))) {
+			// Return true if after sorted and they equal each other, they're
+			// Anagrams
+			return true;
+		} else {
 			return false;
 		}
 	}
@@ -118,8 +120,40 @@ public class AnagramUtil {
 	 * 
 	 * @return String[]
 	 */
+	@SuppressWarnings("null")
 	public static String[] getLargestAnagramGroup(String[] largestAnagrams) {
-		return largestAnagrams;
+
+		// sort all possible anagrams in our string
+		AnagramComparator cmp = new AnagramComparator();
+		insertionSort(largestAnagrams, cmp);
+		ArrayList largestGroup = new ArrayList<>();
+		
+
+		for (int i = 0; i < largestAnagrams.length; i++) {
+			ArrayList currentLargestAnagramGroup = new ArrayList<>();
+
+			currentLargestAnagramGroup.add(largestAnagrams[i]);
+
+			for (int j = i + 1; j < largestAnagrams.length; j++) {
+
+				if (areAnagrams(largestAnagrams[i], largestAnagrams[j])) {
+
+					currentLargestAnagramGroup.add(largestAnagrams[j]);
+
+					if (currentLargestAnagramGroup.size() > largestGroup.size()) {
+						largestGroup = currentLargestAnagramGroup;
+
+					}
+
+				}
+
+			}
+			
+		}
+		String[] result = new String[largestGroup.size()];
+		result = (String[]) largestGroup.toArray(result);
+
+		return result;
 
 	}
 
