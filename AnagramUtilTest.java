@@ -98,6 +98,7 @@ public class AnagramUtilTest {
 														// be reacts and recast
 		// Waiting for discussion response to see what should be the correct
 		// expected list
+		//System.out.println(Arrays.toString(AnagramUtil.getLargestAnagramGroup(list)));
 		assertArrayEquals(expectedList, AnagramUtil.getLargestAnagramGroup(list));
 	}
 
