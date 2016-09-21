@@ -185,15 +185,25 @@ public class AnagramUtil {
 	 * @throws IOException
 	 */
 	public static String[] getLargestAnagramGroup(String filename) throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader(filename));
+		BufferedReader reader = null;
+		String io = "This file does not exist";
+		try {
+			reader = new BufferedReader(new FileReader(filename));
+		} catch (IOException e) {
+			throw new IOException(String.valueOf(io));
+		}
+		// Reads in the file
+
+		// Places our words in an arrayList
 		ArrayList<String> list = new ArrayList<String>();
 		String line;
+		// While our list has a word add it into our arraylist
 		while ((line = reader.readLine()) != null) {
 			list.add(line);
 		}
 		reader.close();
 
-		String[] result = new String[list.size()];
+		String[] result = new String[1];
 		result = (String[]) list.toArray(result);
 		AnagramUtil.getLargestAnagramGroup(result);
 
