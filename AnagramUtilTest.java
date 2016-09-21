@@ -99,7 +99,14 @@ public class AnagramUtilTest {
     public void getLargestAnagramGroupString_File() throws IOException{
 	String[] list = AnagramUtil.getLargestAnagramGroup("sample_word_list.txt");
 	String[] expectedList = { "carets", "Caters", "caster", "crates", "Reacts", "recast", "traces" };
+	System.out.print(Arrays.toString(list));
 	assertArrayEquals(expectedList, list);
+    }
+    
+    @Test
+    public void getLargestAnagramGroupString_File2() throws IOException{
+	String[] list = AnagramUtil.getLargestAnagramGroup("moderate_word_list.txt");
+	System.out.print(Arrays.toString(list));
     }
     
 

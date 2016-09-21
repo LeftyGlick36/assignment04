@@ -182,22 +182,22 @@ public class AnagramUtil {
 	 * 
 	 * @param filename
 	 * @return String
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public static String[] getLargestAnagramGroup(String filename) throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader(filename));		
+		BufferedReader reader = new BufferedReader(new FileReader(filename));
 		ArrayList<String> list = new ArrayList<String>();
 		String line;
 		while ((line = reader.readLine()) != null) {
-		    list.add(line);
+			list.add(line);
 		}
 		reader.close();
-		
+
 		String[] result = new String[list.size()];
 		result = (String[]) list.toArray(result);
 		AnagramUtil.getLargestAnagramGroup(result);
-		
-		return getLargestAnagramGroup(AnagramTester.readFile(filename));
+
+		return AnagramUtil.getLargestAnagramGroup(result);
 	}
 
 }
