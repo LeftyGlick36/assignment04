@@ -121,6 +121,7 @@ public class AnagramUtil {
     }
 
 
+<<<<<<< HEAD
     /**
      * Used for the timing method which is due in the Analysis Document.
      * getLargestAnagramGroup using Java's Sort method on an array.
@@ -132,6 +133,18 @@ public class AnagramUtil {
 	// group of.
 	if (largestAnagrams.length <= 1 || largestAnagrams == null) {
 	    return new String[0];
+=======
+		// Using the sort method, pass in the left string and right string
+		if (sort(left.toLowerCase()).equals(sort(right.toLowerCase()))) {
+			// Return true if after sorted and they equal each other, they're
+			// Anagrams
+			return true;
+		} else {
+			return false;
+		}
+		
+		
+>>>>>>> origin/master
 	}
 	
 	Arrays.sort(largestAnagrams);

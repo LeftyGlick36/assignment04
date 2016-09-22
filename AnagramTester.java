@@ -5,10 +5,6 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * @author Andy Dao, uID: u0692334
- * @author Moses Manning, uId: u0724216
- */
 public class AnagramTester {
 
 	private static Random rand;
