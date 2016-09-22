@@ -2,8 +2,6 @@ package assignment04;
 
 import java.util.Comparator;
 /**
- * Comparator class custom made for AnagramUtil.
- * 
  * @author Andy Dao, uID: u0692334
  * @author Moses Manning, uId: u0724216
  */

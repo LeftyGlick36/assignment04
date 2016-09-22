@@ -11,12 +11,6 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-/**
- * JUnit test for AnagramUtil.
- * 
- * @author Andy Dao, uID: u0692334
- * @author Moses Manning, uId: u0724216
- */
 public class AnagramUtilTest {
 
 	@Before
@@ -81,6 +75,11 @@ public class AnagramUtilTest {
 		String[] list = { "Salesman" }; // An array with only 1 word has no
 										// group of anagrams
 		String[] resultArray = AnagramUtil.getLargestAnagramGroup(list); // So
+																			// should
+																			// return
+																			// an
+																			// empty
+																			// array
 		assertTrue(resultArray.length == 0);
 	}
 
@@ -104,9 +103,29 @@ public class AnagramUtilTest {
 	}
 
 	@Test
-	public void getLargestAnagramGroupString_File()  {
+	public void getLargestAnagramGroupString_File() throws IOException {
 		String[] list = AnagramUtil.getLargestAnagramGroup("sample_word_list.txt");
 		String[] expectedList = { "carets", "Caters", "caster", "crates", "Reacts", "recast", "traces" };
+		System.out.print(Arrays.toString(list));
 		assertArrayEquals(expectedList, list);
 	}
+
+	@Test
+	public void getLargestAnagramGroupString_File2() throws IOException {
+		String[] list = AnagramUtil.getLargestAnagramGroup("moderate_word_list.txt");
+		System.out.println(Arrays.toString(list));
+	}
+
+	@Test(expected = IOException.class)
+	public void getLargestAnagramGroupString_File3() throws IOException {
+		String[] list = AnagramUtil.getLargestAnagramGroup("fakeFile.txt");
+
+	}
+
+	@Test
+	public void getLargestAnagramGroupString_File4() throws IOException {
+		String[] list = AnagramUtil.getLargestAnagramGroup("wordsEn.txt");
+		System.out.println(Arrays.toString(list));
+	}
+
 }
